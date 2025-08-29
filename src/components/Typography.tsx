@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { scaleToDeviceWidth } from '../utlis/responsive';
+import {  scaleWidth } from '../utlis/responsive';
 import { colors } from '../utlis/colors';
 
 type TextProps = {
@@ -45,7 +45,7 @@ export default Typography
 
 const styles = StyleSheet.create({
     text:{
-        fontSize:scaleToDeviceWidth(16),
+        fontSize:scaleWidth(16),
         
     }
 })
