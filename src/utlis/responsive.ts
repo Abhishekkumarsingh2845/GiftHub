@@ -1,31 +1,24 @@
-import {Dimensions, PixelRatio} from 'react-native';
+// scaleUtil.ts
+import {
+  scale,
+  verticalScale,
+  moderateScale,
+  moderateVerticalScale,
+} from 'react-native-size-matters';
 
-const uiDesignDeviceWidth = 414;
-const uiDesignDeviceHeight = 736;
+// 👇 You can define wrapper functions if you want more readable names
+const scaleWidth = (size: number, factor: number = 0.5) =>
+  moderateScale(size, factor);
 
-const uiDesignMinCompatibleDeviceWidth = 375; // iPhone SE (2nd Generation)
-const uiDesignMinCompatibleDeviceHeight = 667; // iPhone SE (2nd Generation)
+const scaleHeight = (size: number, factor: number = 0.5) =>
+  moderateVerticalScale(size, factor);
 
-const deviceWidth = Dimensions.get('window').width;
-const deviceHeight = Dimensions.get('screen').height;
-
-const deviceTooSmallForDesignBaseValues =
-  deviceHeight < uiDesignMinCompatibleDeviceHeight;
-
-const scaleToDeviceWidth = (designBaseValue: number): number => {
-  let scaledValue = designBaseValue;
-  if (deviceTooSmallForDesignBaseValues && designBaseValue !== 0) {
-    scaledValue = (deviceWidth * designBaseValue) / uiDesignDeviceWidth;
-  }
-  return PixelRatio.roundToNearestPixel(scaledValue);
+// ✅ Export everything
+export {
+  scale,                 // Direct width scaling
+  verticalScale,         // Direct height scaling
+  moderateScale,         // Moderate width scaling (recommended)
+  moderateVerticalScale, // Moderate height scaling
+  scaleWidth,            // Wrapper for moderateScale
+  scaleHeight,           // Wrapper for moderateVerticalScale
 };
-
-const scaleToDeviceHeight = (designBaseValue: number): number => {
-  let scaledValue = designBaseValue;
-  if (deviceTooSmallForDesignBaseValues && designBaseValue !== 0) {
-    scaledValue = (deviceHeight * designBaseValue) / uiDesignDeviceHeight;
-  }
-  return PixelRatio.roundToNearestPixel(scaledValue);
-};
-
-export {scaleToDeviceWidth, scaleToDeviceHeight, deviceWidth, deviceHeight};
