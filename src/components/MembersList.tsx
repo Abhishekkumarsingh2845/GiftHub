@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import {
   View,
   Text,
-  Image,
   TouchableOpacity,
   FlatList,
   StyleSheet,
 } from "react-native";
+import Profilepic from "../assets/images/Sample2.svg";
 
 const membersData = [
   { id: "1", name: "Mike Chen", role: "Contributor", type: "Viewer", isCreator: false },
@@ -17,11 +17,8 @@ const membersData = [
 const MemberItem = ({ member, onRemove }) => {
   return (
     <View style={styles.memberCard}>
-      <Image
-        source={{ uri: "https://via.placeholder.com/50" }}
-        style={styles.avatar}
-      />
-      <View style={{ flex: 1 }}>
+      <Profilepic width={40} height={40} />
+      <View style={{ flex: 1, marginLeft: 10 }}>
         <Text style={styles.name}>{member.name}</Text>
         <Text style={styles.subText}>{member.type}</Text>
       </View>
@@ -62,6 +59,7 @@ export default function MembersList() {
         renderItem={({ item }) => (
           <MemberItem member={item} onRemove={handleRemove} />
         )}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
       />
 
       <TouchableOpacity style={styles.addBtn}>
@@ -75,12 +73,12 @@ const styles = StyleSheet.create({
   container: {
     padding: 15,
     backgroundColor: "#f9f9fb",
-    flex: 1,
+    borderRadius: 16,
   },
   heading: {
     fontSize: 18,
     fontWeight: "600",
-    marginBottom: 10,
+    marginBottom: 12,
     color: "#333",
   },
   memberCard: {
@@ -89,34 +87,32 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 10,
     backgroundColor: "white",
-    borderRadius: 12,
-    marginBottom: 10,
-    shadowColor: "#000",
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
-    elevation: 2,
+
+
+  
   },
-  avatar: { width: 40, height: 40, borderRadius: 20, marginRight: 12 },
   name: { fontSize: 16, fontWeight: "500", color: "#222" },
-  subText: { fontSize: 12, color: "gray" },
+  subText: { fontSize: 13, color: "gray" },
   dropdown: {
     borderWidth: 1,
     borderColor: "#ddd",
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 8,
+    backgroundColor: "#fafafa",
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
     marginRight: 8,
   },
   dropdownText: { fontSize: 14, color: "#333" },
   creatorBadge: {
     backgroundColor: "#eef4ff",
     paddingHorizontal: 12,
-    paddingVertical: 4,
-    borderRadius: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
     marginRight: 8,
   },
-  creatorText: { color: "#4a6cff", fontSize: 12, fontWeight: "500" },
+  creatorText: { color: "#4a6cff", fontSize: 13, fontWeight: "500" },
   remove: { fontSize: 18, color: "gray" },
   addBtn: { marginTop: 20, alignItems: "center" },
   addText: { color: "#4a6cff", fontSize: 16, fontWeight: "500" },
+  separator: { height: 10 }, // spacing between cards
 });

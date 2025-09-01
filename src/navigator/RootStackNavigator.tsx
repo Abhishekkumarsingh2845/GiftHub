@@ -12,6 +12,14 @@ import Addtolist from '../Screen/suggest/Addtolist';
 import BirthdayWishlist from '../Screen/Birthday/BirthdayWishlist';
 import AddItems from '../Screen/Add/AddItems';
 import CreateList from '../Screen/list/CreateList';
+import EditList from '../Screen/list/EditList';
+import AddPeople from '../Screen/list/AddPeople';
+import UpdatePurchase from '../Screen/purchase/UpdatePurchase';
+import FullPurchase from '../Screen/purchase/FullPurchase';
+import NewList from '../Screen/groups/NewList';
+import EditNewList from '../Screen/groups/EditNewList';
+import FamilyWishlist from '../Screen/groupFamily/FamilyWishlist';
+import GroupWishlist from '../Screen/groupFamily/GroupWishlist';
 
 const RootStackNavigator = () => {
   const RootStack = createNativeStackNavigator<any>();
@@ -27,7 +35,15 @@ const RootStackNavigator = () => {
       {/* <RootStack.Screen name="Addtolist" component={Addtolist} />  */}
       {/* <RootStack.Screen name="BirthdayWishlist" component={BirthdayWishlist} /> */}
       {/* <RootStack.Screen name="AddItems" component={AddItems} /> */}
-      <RootStack.Screen name="CreateList" component={CreateList} />
+      {/* <RootStack.Screen name="CreateList" component={CreateList} /> */}
+      {/* <RootStack.Screen name="EditList" component={EditList} /> */}
+      {/* <RootStack.Screen name="AddPeople" component={AddPeople} /> */}
+            {/* <RootStack.Screen name="UpdatePurchase" component={UpdatePurchase} /> */}
+                        {/* <RootStack.Screen name="FullPurchase" component={FullPurchase} /> */}
+                           {/* <RootStack.Screen name="NewList" component={NewList} /> */}
+                           {/* <RootStack.Screen name="EditNewList" component={EditNewList} /> */}
+                                                      {/* <RootStack.Screen name="FamilyWishlist" component={FamilyWishlist} /> */}
+                                                        <RootStack.Screen name="GroupWishlist" component={GroupWishlist} />
     </RootStack.Navigator>
   );
 };

@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.primary, // #3B82F6
     height: scaleHeight(50),
-    borderRadius: scaleWidth(20),
+    borderRadius: scaleWidth(15),
     justifyContent: 'center',
     alignItems: 'center',
     marginVertical: scaleHeight(12),
