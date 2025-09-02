@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 import { scaleHeight, scaleWidth } from '../utlis/responsive';
 import AA from '../assets/images/Z1.svg';
-import Lightarrow from "../assets/images/rightarrow.svg"
+import Lightarrow from '../assets/images/rightarrow.svg';
 interface ListCardProps {
   image: string;
   title: string;
@@ -30,7 +30,7 @@ const MemberList: React.FC<ListCardProps> = ({
 
       {/* Chevron */}
       {/* <Ionicons name="chevron-forward" size={scaleWidth(18)} color="#2F80ED" /> */}
-      <Lightarrow width={20} height={20}/>
+      <Lightarrow width={20} height={20} />
     </TouchableOpacity>
   );
 };

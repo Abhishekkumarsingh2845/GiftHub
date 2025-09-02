@@ -11,10 +11,12 @@ const GroupWishlist: React.FC = () => {
   return (
     <Wrapper>
       <Header title={'Join Group'} />
-      <EventCard/>
-      <FormInput label='Set Your Display Name (Optional)' placeholder='Enter your name'/>
-      <SaveButton  cancelText="Preview Gift List First"
-  saveText="Join Group"/>
+      <EventCard />
+      <FormInput
+        label="Set Your Display Name (Optional)"
+        placeholder="Enter your name"
+      />
+      <SaveButton cancelText="Preview Gift List First" saveText="Join Group" />
     </Wrapper>
   );
 };

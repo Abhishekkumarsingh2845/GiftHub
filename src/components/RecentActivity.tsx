@@ -4,7 +4,7 @@ import { scaleHeight, scaleWidth } from '../utlis/responsive';
 import { Fonts } from '../utlis/Fonts';
 import Edittb from '../assets/images//Editbtn.svg';
 import Calendar from '../assets/images/Calendar.svg';
-import Svg from "../assets/images/svg.svg";
+import Svg from '../assets/images/svg.svg';
 
 const RecentActivity: React.FC = () => {
   return (
@@ -60,7 +60,7 @@ const RecentActivity: React.FC = () => {
           </View>
 
           <TouchableOpacity style={styles.addButton}>
-<Svg width={20} height={20}/>
+            <Svg width={20} height={20} />
             <Text style={styles.addButtonText}>Add Member</Text>
           </TouchableOpacity>
         </View>
