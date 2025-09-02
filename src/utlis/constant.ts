@@ -1,25 +1,25 @@
-import { Images } from "../assets/images";
+import Walkthroghsvg from '.././assets/images/walkthrough.svg'
 
 export const ONBOARD_DATA = [
     {
         id: 1,
-        image: Images.onboarding,
+        ImageComponent: Walkthroghsvg,
         ScreenName:"Explore PGs Effortlessly",
-        title: "Find Your Perfect PG, Hassle-Free!",
-        body: "Discover PGs in your preferred location that match your budget and lifestyle. No brokers, no hidden charges—just transparent listings!"
+       
+        body: "Discover thoughtful \n gifts for  every occasion \n with ease"
     },
     {
         id: 2,
-        image: Images.onboarding,
+          ImageComponent: Walkthroghsvg,
         ScreenName:"Verified Listings & Hygiene First",
-        title: "Verified, Budget-Friendly, \n and Hygienic!",
-        body: "Access a curated list of verified PGs with complete details, ensuring a clean, safe, and budget-friendly stay for you."
+    
+        body: "Browse, personalize, and \n send the perfect gift—all \n from your phone."
     },
     {
         id: 3,
-        image:Images.onboarding,
+           ImageComponent: Walkthroghsvg,
         ScreenName:"Smart Search & Easy Booking",
-        title: "Search, Compare, and Book Instantly!",
-        body: "Use smart filters to find the best PGs, compare amenities, and book your stay—all without hidden fees or hassles."
+  
+        body: "Start exploring our \n collection and surprise \n someone special today"
     }
 ]

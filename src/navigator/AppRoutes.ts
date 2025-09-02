@@ -1,3 +1,4 @@
 export enum AppRoutes{
-    Welcome='Welcome'
+    Welcome='Welcome',
+    SignUp='SignUp'
 }

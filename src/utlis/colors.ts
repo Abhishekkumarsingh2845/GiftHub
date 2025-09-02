@@ -1,3 +1,5 @@
+import { StyleSheet } from "react-native";
+
 export const colors = {
   primary: '#3B82F6',   // Blue (main brand color)
   secondary: '#F59E0B', // Amber/Yellow
@@ -10,4 +12,44 @@ export const colors = {
   gray: '#6B7280',      // Neutral gray
   white: '#FFFFFF',
   black: '#000000',
+   text: "#0B0B0B",
+  grey: "#7D7D7D",
+  border: "#E0E0E0",
+  background: "#F9FBFF",
 };
+
+export const globalStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.background,
+    paddingHorizontal: 25,
+    paddingTop: 60,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: "700",
+    color: colors.text,
+    marginBottom: 8,
+  },
+  subtitle: {
+    fontSize: 14,
+    color: "#4F4F4F",
+    marginBottom: 30,
+  },
+  dividerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 25,
+  },
+  line: {
+    flex: 1,
+    height: 1,
+    backgroundColor: colors.border,
+  },
+  orText: {
+    marginHorizontal: 10,
+    color: colors.gray,
+    fontSize: 13,
+  },
+});
+

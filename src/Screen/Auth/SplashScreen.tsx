@@ -5,8 +5,10 @@ import React, {useEffect} from 'react';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
-
 import { Images } from '../../assets/images';
+import Wrapper from '../../components/Wrapper';
+
+
 
 
 type NavigationProps = NativeStackNavigationProp<RootStackParamList, 'Splash'>;
@@ -14,14 +16,19 @@ const SplashScreen = () => {
   const navigation = useNavigation<NavigationProps>();
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('Auth');
+      navigation.navigate('Onboarding');
     }, 3000);
   }, []);
   return (
-    <View style={styles.mainView}>
-     <Image
-   source={Images.logo}></Image>
-    </View>
+   <Wrapper>
+    <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+    <Image source={Images.logo}
+      style={{justifyContent:'center'}}/>
+      </View>
+   </Wrapper>
+      
+     
+
   );
 };
  
