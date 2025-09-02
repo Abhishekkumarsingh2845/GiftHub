@@ -5,7 +5,6 @@ import SplashScreen from '../Screen/Auth/SplashScreen';
 import AuthStackNavigator from './AuthStackNavigator';
 import Notification from '../Screen/notify/Notification';
 import ProfileDetail from '../Screen/profile/ProfileDetail';
-<<<<<<< HEAD
 import Onboarding from '../Screen/Auth/Onboarding';
 import LoginScreen from '../Screen/Auth/LoginScreen';
 import Verification from '../Screen/Auth/Verification';
@@ -21,7 +20,6 @@ import BirthdayGiftsScreen from '../Screen/AddItem/BirthdayGiftsScreen';
 import FamilyWishlistScreen from '../Screen/AddItem/FamilyWishlistScreen';
 
 
-=======
 import EditProfile from '../Screen/profile/EditProfile';
 import AISuggestion from '../Screen/suggest/AISuggestion';
 import Suggestions from '../Screen/suggest/Suggestions';
@@ -37,13 +35,11 @@ import NewList from '../Screen/groups/NewList';
 import EditNewList from '../Screen/groups/EditNewList';
 import FamilyWishlist from '../Screen/groupFamily/FamilyWishlist';
 import GroupWishlist from '../Screen/groupFamily/GroupWishlist';
->>>>>>> secondary
 
 const RootStackNavigator = () => {
   const RootStack = createNativeStackNavigator<any>();
   return (
     <RootStack.Navigator screenOptions={{ headerShown: false }}>
-<<<<<<< HEAD
       <RootStack.Screen name="SpashScreen" component={SplashScreen}/>
       <RootStack.Screen name ="Onboarding" component={Onboarding}/>
       <RootStack.Screen name ='LoginScreen' component ={LoginScreen}/>
@@ -61,7 +57,6 @@ const RootStackNavigator = () => {
                      <RootStack.Screen name ="FamilyWishlistScreen" component={FamilyWishlistScreen}/>
       
 
-=======
       {/* <RootStack.Screen name="Splash" component={SplashScreen} />
        <RootStack.Screen name="Auth" component={AuthStackNavigator} /> */}
       {/* <RootStack.Screen name="Notification" component={Notification} /> */}
@@ -81,7 +76,6 @@ const RootStackNavigator = () => {
                            {/* <RootStack.Screen name="EditNewList" component={EditNewList} /> */}
                                                       {/* <RootStack.Screen name="FamilyWishlist" component={FamilyWishlist} /> */}
                                                         <RootStack.Screen name="GroupWishlist" component={GroupWishlist} />
->>>>>>> secondary
     </RootStack.Navigator>
   );
 };
