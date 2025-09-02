@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+<<<<<<< HEAD
 import { StyleSheet, View, SafeAreaView, ImageBackground, ImageSourcePropType } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -31,6 +32,33 @@ const Wrapper: React.FC<WrapperProps> = ({ children, backgroundImage }) => {
           <View style={styles.content}>{children}</View>
         </LinearGradient>
       )}
+=======
+import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import { scaleWidth } from '../utlis/responsive';
+
+interface WrapperProps {
+  children: ReactNode;
+}
+
+const Wrapper: React.FC<WrapperProps> = ({ children }) => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <LinearGradient
+        colors={['#F3F6FB', '#FFFFFF']} // very light bluish → white
+        start={{ x: 0.5, y: 0 }}
+        end={{ x: 0.5, y: 1 }}
+        style={styles.gradient}
+      >
+        <ScrollView 
+          contentContainerStyle={styles.content}
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled" // makes inputs usable inside
+        >
+          {children}
+        </ScrollView>
+      </LinearGradient>
+>>>>>>> secondary
     </SafeAreaView>
   );
 };
@@ -46,7 +74,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   content: {
+<<<<<<< HEAD
     flex: 1,
     padding: 16,
+=======
+    flexGrow: 1,
+    padding: scaleWidth(12),
+>>>>>>> secondary
   },
 });

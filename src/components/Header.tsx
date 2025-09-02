@@ -1,9 +1,15 @@
 import React from 'react';
+<<<<<<< HEAD
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+=======
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+
+>>>>>>> secondary
 import { scaleHeight, scaleWidth } from '../utlis/responsive';
 import { colors } from '../utlis/colors';
 import { Fonts } from '../utlis/Fonts';
 import Back from '../assets/images/button.svg';
+<<<<<<< HEAD
 import { useNavigation } from '@react-navigation/native';
 
 interface HeaderProps {
@@ -92,6 +98,20 @@ const Header: React.FC<HeaderProps> = ({
           </TouchableOpacity>
         )}
       </View>
+=======
+interface HeaderProps {
+  title: string;
+  onBack?: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ title, onBack }) => {
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.backButton} onPress={onBack}>
+        <Back width={scaleWidth(40)} height={scaleWidth(40)} />
+      </TouchableOpacity>
+      <Text style={styles.title}>{title}</Text>
+>>>>>>> secondary
     </View>
   );
 };
@@ -102,9 +122,15 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
+<<<<<<< HEAD
     paddingVertical: scaleHeight(12),
     paddingHorizontal: scaleWidth(10),
     marginTop: 20,
+=======
+
+    paddingVertical: scaleHeight(12),
+    // paddingHorizontal: scaleWidth(10),
+>>>>>>> secondary
   },
   backButton: {
     width: scaleWidth(40),
@@ -123,10 +149,15 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     fontSize: scaleWidth(18),
+<<<<<<< HEAD
+=======
+
+>>>>>>> secondary
     fontFamily: Fonts.ralewayRegular,
     color: colors.black,
     marginRight: scaleWidth(40),
   },
+<<<<<<< HEAD
   profileRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -157,4 +188,6 @@ const styles = StyleSheet.create({
     height: scaleWidth(24),
     resizeMode: 'contain',
   },
+=======
+>>>>>>> secondary
 });

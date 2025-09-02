@@ -6,7 +6,10 @@ import {
   GestureResponderEvent,
   ViewStyle,
   TextStyle,
+<<<<<<< HEAD
   View,
+=======
+>>>>>>> secondary
 } from 'react-native';
 import { scaleWidth, scaleHeight } from '../utlis/responsive';
 import { Fonts } from '../utlis/Fonts';
@@ -17,7 +20,10 @@ interface PrimaryButtonProps {
   onPress: (event: GestureResponderEvent) => void;
   style?: ViewStyle;
   textStyle?: TextStyle;
+<<<<<<< HEAD
   children?: React.ReactNode; // 👈 allow icons
+=======
+>>>>>>> secondary
 }
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = ({
@@ -25,7 +31,10 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   onPress,
   style,
   textStyle,
+<<<<<<< HEAD
   children,
+=======
+>>>>>>> secondary
 }) => {
   return (
     <TouchableOpacity
@@ -33,10 +42,14 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       style={[styles.button, style]}
       onPress={onPress}
     >
+<<<<<<< HEAD
       <View style={styles.row}>
         {children && <View style={styles.iconWrapper}>{children}</View>}
         <Text style={[styles.text, textStyle]}>{title}</Text>
       </View>
+=======
+      <Text style={[styles.text, textStyle]}>{title}</Text>
+>>>>>>> secondary
     </TouchableOpacity>
   );
 };
@@ -45,6 +58,7 @@ export default PrimaryButton;
 
 const styles = StyleSheet.create({
   button: {
+<<<<<<< HEAD
     backgroundColor: colors.primary,
     height: scaleHeight(40),
     borderRadius: scaleWidth(25),
@@ -61,6 +75,15 @@ const styles = StyleSheet.create({
   },
   iconWrapper: {
     marginRight: scaleWidth(8),
+=======
+    backgroundColor: colors.primary, // #3B82F6
+    height: scaleHeight(50),
+    borderRadius: scaleWidth(15),
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: scaleHeight(12),
+    width: '100%',
+>>>>>>> secondary
   },
   text: {
     color: '#fff',
