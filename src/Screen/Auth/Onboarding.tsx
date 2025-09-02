@@ -1,98 +1,81 @@
-<<<<<<< HEAD
 import React, { useRef, useState } from "react";
 import {
   View,
   Text,
   StyleSheet,
   FlatList,
-  Image,
   Dimensions,
-  TouchableOpacity,
+  Image
 } from "react-native";
-import { ONBOARD_DATA } from "../../utlis/constant";
-import { scaleWidth } from "../../utlis/responsive";
-import Wrapper from "../../components/Wrapper";
-import { Images } from "../../assets/images";
-import OnboardImage from "../../components/OnboardImage";
-import { Fonts } from "../../utlis/Fonts";
-import PrimaryButton from "../../components/PrimaryButton";
 import { useNavigation } from "@react-navigation/native";
 
+import { ONBOARD_DATA } from "../../utlis/constant";
+import { Fonts } from "../../utlis/Fonts";
+import Wrapper from "../../components/Wrapper";
+import PrimaryButton from "../../components/PrimaryButton";
+import { Images } from "../../assets/images";
+import { scaleWidth } from "../../utlis/responsive";
 
-const { width, height } = Dimensions.get("window");
+const width = Dimensions.get("window").width;
+const height=Dimensions.get('window').height
 
 const OnboardingScreen = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const flatListRef = useRef<FlatList>(null);
+  const navigation = useNavigation();
 
   const onViewRef = useRef(({ viewableItems }: any) => {
     if (viewableItems.length > 0) {
       setCurrentIndex(viewableItems[0].index);
     }
   });
-  const navigation=useNavigation()
 
   const viewConfigRef = useRef({ viewAreaCoveragePercentThreshold: 50 });
-  
 
   const handleNext = () => {
     if (currentIndex < ONBOARD_DATA.length - 1) {
       flatListRef.current?.scrollToIndex({ index: currentIndex + 1 });
     } else {
-      console.log("🎉 Onboarding Completed");
-      navigation.navigate("LoginScreen") // add navigation here
+      navigation.navigate("LoginScreen");
     }
   };
-    const OnPressSkip = (): void => {
-    navigation.reset({
-      index: 0,
-      routes: [{
-        name: AppRoutes.DRAWERSTACK
-      }],
-    });
-    setTimeout(() => {
-      dispatch(setNavigationValue(AppRoutes.DRAWERSTACK));
-    }, 5);
-  }
-
 
   const renderItem = ({ item }: any) => (
-    <Wrapper backgroundImage={Images.onboarding}>
-    <View style={styles.slide}>
-      
-      {/* Top Image */}
-      <View style={{ justifyContent: 'center', alignItems: 'center' ,marginTop:scaleWidth(275)}}>
-  
-  <OnboardImage  item={item} />
-  </View>
-      {/* Bottom White Card */}
-      <View style={styles.bottomCard}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.body}>{item.body}</Text>
-
-        {/* Pagination Dots */}
-        <View style={styles.dotsContainer}>
-          {ONBOARD_DATA.map((_, index) => (
-            <View
-              key={index}
-              style={[
-                styles.dot,
-                {
-                  backgroundColor:
-                    index === currentIndex ? "#0066FF" : "#D0D0D0",
-                },
-              ]}
-            />
-          ))}
+    <Wrapper disablePadding backgroundImage={Images.onboarding}>
+      <View style={styles.slide}>
+        {/* Top Image */}
+        <View style={styles.imageContainer}>
+         <Image
+          source={item.image} // 👈 yaha aap ONBOARD_DATA ka image use kar rahe ho
+          style={styles.img}
+          resizeMode="contain"
+        />
         </View>
 
-        {/* Button */}
-       <PrimaryButton
-       title="Get Started"
-       onPress={handleNext}
-       />
+        {/* Bottom Card */}
+        <View style={styles.bottomCard}>
+          <Text style={styles.body}>{item.body}</Text>
+
+          {/* Pagination Dots */}
+          <View style={styles.dotsContainer}>
+            {ONBOARD_DATA.map((_, index) => (
+              <View
+                key={index}
+                style={[
+                  styles.dot,
+                  { backgroundColor: index === currentIndex ? "#0066FF" : "#D0D0D0" },
+                ]}
+              />
+            ))}
+          </View>
+
+          {/* Button */}
+          <PrimaryButton
+            title={currentIndex === ONBOARD_DATA.length - 1 ? "Get Started" : "Next"}
+            onPress={handleNext}
+          />
+        </View>
       </View>
-    </View>
     </Wrapper>
   );
 
@@ -118,160 +101,57 @@ export default OnboardingScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5F7FB",
+    backgroundColor: "#F5F7FB", // light background
   },
   slide: {
-    width: width,
-    height:height,
+    width,
+    height,
     alignItems: "center",
-    justifyContent: "space-between",
-  },
+    justifyContent: "flex-end",
 
+  },
+  imageContainer: {
+    flex: 0.6,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop:250
+
+    
+
+  },
+  img:{
+    width:scaleWidth(width*0.9),
+    height:height*0.45
+  },
   bottomCard: {
+    flex: 0.4,
     backgroundColor: "#FFFFFF",
-    width: width ,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    width,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
     paddingVertical: 30,
     paddingHorizontal: 25,
     alignItems: "center",
-    bottom:0,
-   
-
-
-    // Shadow / Elevation
-    // shadowColor: "#000",
-    // shadowOffset: { width: 0, height: -2 },
-    // shadowOpacity: 0.1,
-    // shadowRadius: 6,
-    // elevation: 5,
-
-    position: "absolute",
     
-  
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "600",
-    color: "#0B0B0B",
-    textAlign: "center",
-    marginBottom: 10,
   },
   body: {
-    fontSize: 28,
-    color: "#4F4F4F",
+    fontSize: 26,
+    color: "#0B0B0B",
     textAlign: "center",
- 
-    marginBottom: 20,
-    fontFamily:Fonts.ralewaySemiBold
+    marginBottom: 25,
+    fontFamily: Fonts.ralewaySemiBold,
+    lineHeight: 38,
+
   },
   dotsContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    marginBottom: 20,
+    marginBottom: 25,
   },
   dot: {
     width: 8,
     height: 8,
     borderRadius: 4,
     marginHorizontal: 5,
-  },
-  button: {
-    backgroundColor: "#0066FF",
-    width: width * 0.9,
-    paddingVertical: 15,
-    borderRadius: 12,
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#FFFFFF",
-    fontWeight: "600",
-    fontSize: 16,
-=======
-import { StyleSheet, View, Image, ImageBackground, KeyboardAvoidingView, StatusBar } from 'react-native';
-import React, { useCallback } from 'react';
-import { Images } from '../../assets/images';
-import Typography from '../../components/Typography';
-import { colors } from '../../utlis/colors';
-import { Fonts } from '../../utlis/Fonts';
-import { scaleHeight, scaleWidth } from '../../utlis/responsive';
-
-const Onboarding = () => {
-  const _renderItem = useCallback(
-    ({ item, index }: { item: renderItemProps; index: number }) => {
-      return (
-        <View style={{ width: scaleWidth(375) }}> 
-          {/* 375 is base design width, adjust via scaleWidth */}
-          <Image source={Images.onboarding} resizeMode="contain" />
-          <Typography
-            content={item.title}
-            fontSize={scaleWidth(24)}
-            fontFamily={Fonts.ralewayBold}
-            color={colors.primary}
-            style={{
-              textAlign: 'center',
-              alignSelf: 'center',
-              lineHeight: scaleHeight(40),
-              marginTop: scaleHeight(20),
-              width: scaleWidth(340),
-            }}
-          />
-          <Typography
-            content={item.body}
-            fontSize={scaleWidth(14)}
-            fontFamily={Fonts.ralewayRegular}
-            color={colors.primary}
-            style={{
-              textAlign: 'center',
-              lineHeight: scaleHeight(22),
-              marginTop: scaleHeight(10),
-              width: scaleWidth(320),
-              alignSelf: 'center',
-            }}
-          />
-        </View>
-      );
-    },
-    [],
-  );
-
-  return (
-    <KeyboardAvoidingView style={{ flex: 1 }}>
-      <StatusBar
-        translucent
-        backgroundColor="transparent"
-        barStyle="dark-content"
-      />
-      <ImageBackground
-        source={Images.onboarding}
-        style={{ width: scaleWidth(375), height: scaleHeight(812) }} 
-        // base iPhone X design size → responsive via scale funcs
-      >
-        <Image
-          source={Images.walkthrough}
-          style={{
-            width: scaleWidth(360),
-            height: undefined,
-            aspectRatio: 1,
-            alignSelf: 'center',
-          }}
-        />
-      </ImageBackground>
-    </KeyboardAvoidingView>
-  );
-};
-
-export default Onboarding;
-
-const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-  },
-  onboardingImg: {},
-  footer: {
-    paddingHorizontal: scaleWidth(24),
-    marginTop: scaleHeight(40),
-    marginBottom: scaleHeight(40),
->>>>>>> secondary
   },
 });

@@ -21,7 +21,7 @@ const BirthdayGiftsScreen = () => {
   ];
   const navigation=useNavigation()
   const hadleAdd=()=>{
-    navigation.navigate('FamilyWishlistScreen')
+    navigation.navigate('FamilyWishlist')
 
   }
 

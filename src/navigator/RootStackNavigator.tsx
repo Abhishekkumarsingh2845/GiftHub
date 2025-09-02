@@ -35,6 +35,8 @@ import NewList from '../Screen/groups/NewList';
 import EditNewList from '../Screen/groups/EditNewList';
 import FamilyWishlist from '../Screen/groupFamily/FamilyWishlist';
 import GroupWishlist from '../Screen/groupFamily/GroupWishlist';
+import AddSplitPaymentScreen from '../Screen/Payment/AddSplitPaymentScreen';
+import AddPaymentScreen from '../Screen/Payment/AddPaymentScreen';
 
 const RootStackNavigator = () => {
   const RootStack = createNativeStackNavigator<any>();
@@ -54,7 +56,9 @@ const RootStackNavigator = () => {
          <RootStack.Screen name ="ProductDetails" component={ProductDetails}/>
         <RootStack.Screen name ="ExpenseManagerScreen" component={ExpenseManagerScreen}/>
            <RootStack.Screen name ="BirthdayGiftsScreen" component={BirthdayGiftsScreen}/>
-                     <RootStack.Screen name ="FamilyWishlistScreen" component={FamilyWishlistScreen}/>
+                     <RootStack.Screen name ="FamilyWishlist" component={FamilyWishlist}/>
+                     <RootStack.Screen name ="AddSplitPaymentScreen" component={AddSplitPaymentScreen}/>
+                     <RootStack.Screen name ="AddPaymentScreen" component={AddPaymentScreen}/>
       
 
       {/* <RootStack.Screen name="Splash" component={SplashScreen} />

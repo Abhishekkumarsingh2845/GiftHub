@@ -14,6 +14,8 @@ import ShareIcon from'../../assets/images/sharebtn.svg'
 import { useNavigation } from "@react-navigation/native";
 const { width, height } = Dimensions.get("window");
 import RoundRoatate from '../../assets/images/roundrotate.svg'
+import { Images } from "../../assets/images";
+import Back from '../../assets/images/CaretRight.svg'
 
 interface ErrorScreenProps {
   onBack?: () => void;
@@ -36,7 +38,7 @@ const ErrorScreen: React.FC<ErrorScreenProps> = ({
     }
 
   return (
-    <Wrapper>
+    <Wrapper disablePadding backgroundImage={Images.backgroudShadow}>
     <View style={styles.container}>
       {/* Header */}
     <Header showBack={true} title="Product Details"/>
@@ -57,26 +59,24 @@ const ErrorScreen: React.FC<ErrorScreenProps> = ({
         {/* Buttons */}
         <View style={styles.buttonRow}>
   {/* Back to Home (Outline Button with icon) */}
-  <PrimaryButton
+<PrimaryButton
     title="Back to Home"
-    
     onPress={handleViewGift}
-    style={[  styles.buttonBack,styles.outlineButton]}
-    textStyle={styles.outlineText}
-  >
-    <Home width={18} height={18} style={styles.btnIcon} />
-  </PrimaryButton>
+    style={{ flex: 1, marginRight: 8 }}
+    variant="outline"
+    leftIcon={<Home width={18} height={18} 
+    />}
+  />
 
-  {/* Try Again (Filled Button with icon) */}
-  <PrimaryButton
-    title="Try Again"
-    onPress={onRetry || (() => {})}
-    style={[ styles.buttonTry, styles.fillButton]}
-    textStyle={styles.fillText}
-  >
-    <RoundRoatate width={18} height={18} style={styles.btnIcon} />
    
-  </PrimaryButton>
+
+
+<PrimaryButton
+    title="Try Again"
+    onPress={onRetry ?? (() => {})}
+    style={{ flex: 1, marginLeft: 8 }}
+    leftIcon={<RoundRoatate width={18} height={18} />}
+  />
 </View>
 
         {/* While you wait */}
@@ -85,13 +85,13 @@ const ErrorScreen: React.FC<ErrorScreenProps> = ({
   <TouchableOpacity style={styles.listItem} onPress={onBrowseSimilar}>
     <MaginifyingGlass width={20}/>
     <Text style={styles.listText}>Browse similar products</Text>
-    <ShareIcon width={20} height={20} style={{ marginLeft: "auto" }} /> 
+    <Back width={20} height={20} style={{ marginLeft: "auto" }} /> 
   </TouchableOpacity>
 
   <TouchableOpacity style={styles.listItem} onPress={onViewGiftList}>
     <ThreeLine width={20}/>
     <Text style={styles.listText}>View your gift lists</Text>
-    <ShareIcon width={20} height={20} style={{ marginLeft: "auto" }} /> 
+   <Back width={20} height={20} style={{ marginLeft: "auto" }} /> 
   </TouchableOpacity>
 </View>
 
@@ -168,7 +168,7 @@ buttonRow: {
   justifyContent: "flex-start",  // 👈 left align
   alignItems: "center",
   marginBottom: 20,
-  gap: 10,                       // 👈 buttons ke beech spacing
+  gap: 5,                       // 👈 buttons ke beech spacing
 },
 
 buttonBack: {

@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 import { StyleSheet } from "react-native";
 
-=======
->>>>>>> secondary
+
+
 export const colors = {
   primary: '#3B82F6',   // Blue (main brand color)
   secondary: '#F59E0B', // Amber/Yellow
@@ -15,7 +15,6 @@ export const colors = {
   gray: '#6B7280',      // Neutral gray
   white: '#FFFFFF',
   black: '#000000',
-<<<<<<< HEAD
    text: "#0B0B0B",
   grey: "#7D7D7D",
   border: "#E0E0E0",
@@ -57,6 +56,6 @@ export const globalStyles = StyleSheet.create({
   },
 });
 
-=======
-};
->>>>>>> secondary
+
+
+

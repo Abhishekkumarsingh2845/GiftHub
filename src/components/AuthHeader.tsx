@@ -27,8 +27,10 @@ const AuthHeader: React.FC<Props> = ({ title, subtitle ,title2,title3}) => {
       {/* Subtitle (Optional) */}
       {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
       <View style={{flexDirection:'row'}}>
-         <Text style={styles.subtitle}>{title2}</Text>
-         <TouchableOpacity> <Text style={styles.edit}>{title3}</Text></TouchableOpacity>
+      <Text style={styles.subtitle}>{title2 ?? ""}</Text>
+         <TouchableOpacity> 
+          <Text style={styles.edit}>{title3 ?? ""}</Text>
+          </TouchableOpacity>
       </View>
         
     </View>

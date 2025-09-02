@@ -1,25 +1,46 @@
 import React, { ReactNode } from 'react';
-<<<<<<< HEAD
-import { StyleSheet, View, SafeAreaView, ImageBackground, ImageSourcePropType } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  SafeAreaView,
+  ImageBackground,
+  ImageSourcePropType,
+  ScrollView,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { scaleWidth } from '../utlis/responsive';
 
 interface WrapperProps {
   children: ReactNode;
-  backgroundImage?: ImageSourcePropType; // optional image
+  backgroundImage?: ImageSourcePropType;
+  disablePadding?: boolean;   // 👈 new prop
 }
 
-const Wrapper: React.FC<WrapperProps> = ({ children, backgroundImage }) => {
+const Wrapper: React.FC<WrapperProps> = ({ children, backgroundImage, disablePadding }) => {
   return (
     <SafeAreaView style={styles.container}>
       {backgroundImage ? (
-        <ImageBackground source={backgroundImage} style={styles.gradient} resizeMode="cover">
+        <ImageBackground
+          source={backgroundImage}
+          style={styles.gradient}
+          resizeMode="cover"
+        >
           <LinearGradient
-            colors={['#F3F6FBAA', '#FFFFFFAA']} // add transparency if needed
+            colors={['#F3F6FBAA', '#FFFFFFAA']}
             start={{ x: 0.5, y: 0 }}
             end={{ x: 0.5, y: 1 }}
             style={styles.gradient}
           >
-            <View style={styles.content}>{children}</View>
+            <ScrollView
+              contentContainerStyle={[
+                styles.content,
+                disablePadding && { padding: 0 },  // ✅ remove padding if requested
+              ]}
+              showsVerticalScrollIndicator={false}
+              keyboardShouldPersistTaps="handled"
+            >
+              {children}
+            </ScrollView>
           </LinearGradient>
         </ImageBackground>
       ) : (
@@ -29,36 +50,18 @@ const Wrapper: React.FC<WrapperProps> = ({ children, backgroundImage }) => {
           end={{ x: 0.5, y: 1 }}
           style={styles.gradient}
         >
-          <View style={styles.content}>{children}</View>
+          <ScrollView
+            contentContainerStyle={[
+              styles.content,
+              disablePadding && { padding: 0 },
+            ]}
+            showsVerticalScrollIndicator={false}
+            keyboardShouldPersistTaps="handled"
+          >
+            {children}
+          </ScrollView>
         </LinearGradient>
       )}
-=======
-import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import { scaleWidth } from '../utlis/responsive';
-
-interface WrapperProps {
-  children: ReactNode;
-}
-
-const Wrapper: React.FC<WrapperProps> = ({ children }) => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <LinearGradient
-        colors={['#F3F6FB', '#FFFFFF']} // very light bluish → white
-        start={{ x: 0.5, y: 0 }}
-        end={{ x: 0.5, y: 1 }}
-        style={styles.gradient}
-      >
-        <ScrollView 
-          contentContainerStyle={styles.content}
-          showsVerticalScrollIndicator={false}
-          keyboardShouldPersistTaps="handled" // makes inputs usable inside
-        >
-          {children}
-        </ScrollView>
-      </LinearGradient>
->>>>>>> secondary
     </SafeAreaView>
   );
 };
@@ -74,12 +77,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   content: {
-<<<<<<< HEAD
-    flex: 1,
-    padding: 16,
-=======
     flexGrow: 1,
     padding: scaleWidth(12),
->>>>>>> secondary
   },
 });
