@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
 
     marginTop: 20,
 
-    marginTop: scaleHeight(20),
+
     paddingHorizontal: scaleWidth(12),
   },
   avatarContainer: {

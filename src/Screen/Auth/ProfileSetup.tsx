@@ -47,9 +47,10 @@ const calendarSvg = `
 const ProfileSetup = () => {
   const [dob, setDob] = useState("25/06/1999");
   const navigation=useNavigation()
-  const handleContinue=()=>{
-    navigation.navigate('HomeScreen')
-  }
+  const handleContinue = () => {
+  navigation.navigate("MainTabs", { screen: "Home" });
+};
+
 
   return (
     <Wrapper>

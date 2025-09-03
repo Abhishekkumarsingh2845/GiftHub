@@ -7,9 +7,10 @@ interface PurchaserCardProps {
   name: string;
   email: string;
   price?: string | number;
-  showPrice?: boolean; // agar true hoga to hi show hoga
-  avatar: ReactNode; // ✅ SVG ya koi bhi custom component
-  onRemove: () => void;
+  showPrice?: boolean; 
+  avatar: ReactNode; 
+  onRemove?: () => void;
+  showRemove?: boolean;
 }
 
 const Purchaseforpayment: React.FC<PurchaserCardProps> = ({
@@ -19,10 +20,11 @@ const Purchaseforpayment: React.FC<PurchaserCardProps> = ({
   showPrice = false,
   avatar,
   onRemove,
+  showRemove = false,
 }) => {
   return (
     <View style={styles.card}>
-      {/* Avatar (SVG ya Image as Component) */}
+      {/* Avatar */}
       <View style={styles.avatar}>{avatar}</View>
 
       {/* User Info */}
@@ -31,13 +33,19 @@ const Purchaseforpayment: React.FC<PurchaserCardProps> = ({
         <Text style={styles.email}>{email}</Text>
       </View>
 
-      {/* Price (conditionally) */}
-      {showPrice && <Text style={styles.price}>${price}</Text>}
+      {/* Price (optional) */}
+      {showPrice && (
+        <View style={styles.priceBox}>
+          <Text style={styles.price}>{price}</Text>
+        </View>
+      )}
 
-      {/* Cross Button */}
-      <TouchableOpacity onPress={onRemove} style={styles.crossBtn}>
-        <Text style={styles.crossText}>✕</Text>
-      </TouchableOpacity>
+      {/* Remove button (optional) */}
+      {showRemove && (
+        <TouchableOpacity onPress={onRemove} style={styles.crossBtn}>
+          <Text style={styles.crossText}>✕</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
@@ -51,11 +59,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: scaleWidth(12),
     padding: scaleWidth(10),
-    marginBottom: scaleHeight(10),
     shadowColor: "#000",
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
-    elevation: 2,
+    shadowOpacity: 0.04, // halka shadow
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 3,
+    elevation: 0.5, // Android ke liye minimal
   },
   avatar: {
     width: scaleWidth(40),
@@ -78,15 +86,24 @@ const styles = StyleSheet.create({
     fontSize: scaleWidth(12),
     fontFamily: Fonts.ralewayRegular,
     color: "#6B7280",
+    marginTop: scaleHeight(2),
+  },
+  priceBox: {
+    borderWidth: 1,
+    borderRadius: 12,
+    borderColor: "#EAEAEA",
+    paddingHorizontal: 8,
+    justifyContent: "center",
+    alignItems: "center",
   },
   price: {
     fontSize: scaleWidth(13),
     fontFamily: Fonts.ralewayMedium,
     color: "#111827",
-    marginRight: scaleWidth(10),
   },
   crossBtn: {
     padding: scaleWidth(4),
+    marginLeft: scaleWidth(6),
   },
   crossText: {
     fontSize: scaleWidth(16),

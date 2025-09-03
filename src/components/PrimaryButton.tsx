@@ -6,10 +6,7 @@ import {
   GestureResponderEvent,
   ViewStyle,
   TextStyle,
-
   View,
-
-
 } from 'react-native';
 import { scaleWidth, scaleHeight } from '../utlis/responsive';
 import { Fonts } from '../utlis/Fonts';
@@ -20,10 +17,8 @@ interface PrimaryButtonProps {
   onPress: (event: GestureResponderEvent) => void;
   style?: ViewStyle;
   textStyle?: TextStyle;
-
-  children?: React.ReactNode; // 👈 allow icons
-
-
+  children?: React.ReactNode;
+  size?: 'default' | 'small'; // 👈 new prop
 }
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = ({
@@ -32,16 +27,29 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   style,
   textStyle,
   children,
+  size = 'default',
 }) => {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
-      style={[styles.button, style]}
+      style={[
+        styles.button,
+        size === 'small' ? styles.smallButton : styles.defaultButton,
+        style,
+      ]}
       onPress={onPress}
     >
       <View style={styles.row}>
         {children && <View style={styles.iconWrapper}>{children}</View>}
-        <Text style={[styles.text, textStyle]}>{title}</Text>
+        <Text
+          style={[
+            styles.text,
+            size === 'small' ? styles.smallText : null,
+            textStyle,
+          ]}
+        >
+          {title}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -51,16 +59,23 @@ export default PrimaryButton;
 
 const styles = StyleSheet.create({
   button: {
-
     backgroundColor: colors.primary,
-    height: scaleHeight(40),
     borderRadius: scaleWidth(25),
     justifyContent: 'center',
     alignItems: 'center',
+    borderColor: '#1D5ABF',
+    borderWidth: 1,
+  },
+  defaultButton: {
+    height: scaleHeight(48),
+    width: '100%', // 👈 full width
     marginVertical: scaleHeight(12),
-    width:'100%',
-    borderColor:'#1D5ABF',borderWidth:1
-  
+  },
+  smallButton: {
+    height: scaleHeight(35),
+    paddingHorizontal: scaleWidth(16), // 👈 content ke hisaab se
+    alignSelf: 'flex-start', // 👈 jitna text hoga utna hi width lega
+    marginVertical: scaleHeight(6),
   },
   row: {
     flexDirection: 'row',
@@ -68,19 +83,13 @@ const styles = StyleSheet.create({
   },
   iconWrapper: {
     marginRight: scaleWidth(8),
-
-    backgroundColor: colors.primary, // #3B82F6
-    height: scaleHeight(50),
-    borderRadius: scaleWidth(15),
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginVertical: scaleHeight(12),
-    width: '100%',
-
   },
   text: {
     color: '#fff',
     fontSize: scaleWidth(16),
     fontFamily: Fonts.ralewaySemiBold,
+  },
+  smallText: {
+    fontSize: scaleWidth(14),
   },
 });

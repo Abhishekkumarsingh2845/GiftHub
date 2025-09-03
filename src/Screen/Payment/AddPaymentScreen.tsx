@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity,ScrollView } from "react-native";
 import ProductCard from "../../Custom/ProductCard";
 import PaymentOptionCard from "../../components/PaymentOptionCard";
 
@@ -8,7 +8,11 @@ import ProductCardForpayment from "../../components/ProductCardForpayment";
 import Purchaseforpayment from "../../components/Purchaseforpayment";
 import HeadphoneSvg from '../../assets/images/headphone.svg'
 import Header from "../../components/Header";
-
+import Avtar from '../../assets/images/Avtar.svg'
+import { Fonts } from "../../utlis/Fonts";
+import Wrapper from "../../components/Wrapper";
+import Calender from '../../assets/images/CalenderIcon.svg'
+import UploadImage from '../../assets/images/FileArrowUp.svg'
 
 const AddPaymentScreen = () => {
   const [selectedPayment, setSelectedPayment] = useState("individual");
@@ -17,7 +21,8 @@ const AddPaymentScreen = () => {
 
 
   return (
-    <View style={styles.container}>
+    <Wrapper>
+   <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 40 }}>
       {/* Header */}
    <Header title=" Add Payment" showBack/>
 
@@ -47,32 +52,37 @@ const AddPaymentScreen = () => {
       />
 
       {/* Amount */}
-      <Text style={styles.sectionTitle}>Amount</Text>
+      <Text style={styles. sectionAmountTitle}>Amount</Text>
       <TextInput
         style={styles.input}
         value={`$${amount}`}
+      
         onChangeText={(text) => setAmount(text)}
       />
 
-      {/* Purchaser */}
-      <Text style={styles.sectionTitle}>Purchaser</Text>
-      <Purchaseforpayment
-        name="sarah"
-        email="sarah@email.com"
-      
-      />
+<View style={styles.purchaserBox}>
+  <Text style={styles.sectionTitle}>Purchaser</Text>
+  <Purchaseforpayment
+    name="sarah"
+    email="sarah@email.com"
+    avatar={<Avtar />}
+  />
+</View>
+
+
 
       {/* Purchase Date */}
-      <Text style={styles.sectionTitle}>Purchase Date</Text>
+      <Text style={styles.sectionAmountTitle}>Purchase Date</Text>
       <View style={styles.dateInput}>
-        <Text style={{ color: "#111827" }}>August 6, 2025</Text>
+        <Text style={{ color: "#111827",fontFamily:Fonts.ralewayMedium }}>August 6, 2025</Text>
+        <Calender/>
       
       </View>
 
       {/* Notes */}
-      <Text style={styles.sectionTitle}>Notes (Optional)</Text>
+      <Text style={styles.sectionAmountTitle}>Notes (Optional)</Text>
       <TextInput
-        style={[styles.input, { height: 80 }]}
+        style={[styles.input, { height: 100 }]}
         placeholder="Add any additional notes..."
         value={notes}
         onChangeText={setNotes}
@@ -80,15 +90,17 @@ const AddPaymentScreen = () => {
       />
 
       {/* Receipt */}
-      <Text style={styles.sectionTitle}>Receipt (Optional)</Text>
+      <Text style={styles.sectionAmountTitle}>Receipt (Optional)</Text>
       <TouchableOpacity style={styles.uploadBox}>
+        <UploadImage/>
         <Text style={{ color: "#6B7280" }}>Tap to upload image</Text>
         <Text style={{ color: "#9CA3AF", fontSize: 12 }}>JPG, PNG up to 5MB</Text>
       </TouchableOpacity>
 
       {/* Save Button */}
       <PrimaryButton title="Save Payment" onPress={() => {}} />
-    </View>
+        </ScrollView>
+   </Wrapper>
   );
 };
 
@@ -107,10 +119,18 @@ const styles = StyleSheet.create({
     color: "#111827",
   },
   sectionTitle: {
-    fontSize: 14,
-    fontWeight: "600",
+    fontSize: 16,
+
     marginVertical: 10,
     color: "#111827",
+    fontFamily:Fonts.ralewaySemiBold
+  },
+    sectionAmountTitle: {
+    fontSize: 16,
+
+    marginVertical: 10,
+    color: "#6C7278",
+    fontFamily:Fonts.ralewaySemiBold
   },
   input: {
     borderWidth: 1,
@@ -119,6 +139,11 @@ const styles = StyleSheet.create({
     padding: 12,
     backgroundColor: "#fff",
     marginBottom: 16,
+   fontSize: 16,
+    fontFamily: Fonts.ralewayMedium,
+    color: "#111827",
+    textAlign: "left",  
+    
   },
   dateInput: {
     flexDirection: "row",
@@ -140,5 +165,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 20,
     borderStyle: "dashed",
+    height:140
   },
+
+purchaserBox: {
+  backgroundColor: "#FCFCFD",
+  borderRadius: 12,
+  padding: 12,
+  marginBottom: 16,
+  shadowColor: "#000",
+  shadowOpacity: 0.05,
+  shadowOffset: { width: 0, height: 2 },
+  shadowRadius: 4,
+  elevation: 2, // Android ke liye
+},
+
+
+
+
+
+
 });

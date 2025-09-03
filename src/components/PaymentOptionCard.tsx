@@ -27,7 +27,12 @@ const PaymentOptionCard: React.FC<PaymentOptionCardProps> = ({
       style={styles.card}
     >
       {/* Left Radio Circle */}
-      <View style={[styles.radioOuter]}>
+      <View
+        style={[
+          styles.radioOuter,
+          { borderColor: isSelected ? '#3B82F6' : '#9CA3AF' }, // 👈 blue if selected, grey if not
+        ]}
+      >
         {isSelected && <View style={styles.radioInner} />}
       </View>
 
@@ -58,7 +63,7 @@ const styles = StyleSheet.create({
     height: scaleWidth(22),
     borderRadius: 50,
     borderWidth: 2,
-    borderColor: "#9CA3AF", // hamesha grey
+    borderColor: "#2563EB", // hamesha grey
     alignItems: "center",
     justifyContent: "center",
     marginRight: scaleWidth(12),
@@ -78,7 +83,7 @@ const styles = StyleSheet.create({
     color: "#111827",
   },
   subtitle: {
-    fontSize: scaleWidth(12),
+    fontSize: scaleWidth(14),
     fontFamily: Fonts.ralewayRegular,
     color: "#6B7280",
     marginTop: scaleHeight(2),
